@@ -123,7 +123,7 @@ The script accepts these inputs fields:
 ### Example to note Pre-Image and propose
 `yarn set-transact-info --ws-provider ws://127.0.0.1:34102  --destination  '{ "parents": 1, "interior": "Here" }' --fee-per-second 8 --extra-weight 3000000000 --max-weight 20000000000 --account-priv-key "0x5fb92d6e98884f76de468fa3f6278f8807c48bebc13595d45af5bdc4da702133" --send-preimage-hash true --send-proposal-as  democracy`
 
-### Example to note Pre-Image and propose through council
+### Example to note Pre-Image and propse through council
 `yarn set-transact-info --ws-provider ws://127.0.0.1:34102  --destination  '{ "parents": 1, "interior": "Here" }' --fee-per-second 8 --extra-weight 3000000000 --max-weight 20000000000 --account-priv-key "0x8075991ce870b93a8870eca0c0f91913d12f47948ca0fd25b49c6fa7cdbeee8b" --send-preimage-hash true --send-proposal-as council-external -c 2`
 
 ### Example to note Pre-Image and propose through democracy with index registration
@@ -205,3 +205,18 @@ The script accepts these inputs fields:
 ### Example through democracy but batching 2 txs
 
 `yarn generic-call-propose -w ws://127.0.0.1:34102  --call "0x0302f24ff3a9cf04c71dbc94d0b566f7a27b94566cacc0f0f4ab324c46e55d02d0033343b4be8a55532d28" --call "0x0302f24ff3a9cf04c71dbc94d0b566f7a27b94566cacc0f0f4ab324c46e55d02d0033343b4be8a55532d28" --account-priv-key "0x5fb92d6e98884f76de468fa3f6278f8807c48bebc13595d45af5bdc4da702133" --send-preimage-hash true --send-proposal-as democracy`
+
+## Para-registrar-swap
+
+Script that allows to do a para id swap in the relay from the parachain.
+
+The script accepts these inputs fields:
+- `--parachain-ws-provider or --wp`, which specifies the parachain websocket provider to which we will be issuing our requests
+- `--relay-ws-provider or --wr`, which specifies the relay websocket provider to which we will be issuing our requests
+- `--old-para-id or -p`, The paraId to be swapped.
+- `--bew-para-id or -p`, The new paraId.
+- `--account-priv-key or -a`, which specifies the account that will submit the proposal
+- `--send-preimage-hash or -h`, boolean specifying whether we want to send the preimage hash
+- `--send-proposal-as or -s`, optional, but if providede needs to be "democracy" or "council-external" specifying whether we want to send the proposal through regular democracy or as an external proposal that will be voted by the council
+- `--collective-threshold or -c`, Optional, number specifying the number of council votes that need to aprove the proposal. If not provided defautls to 1.
+- `--at-block`, Optional, number specifying the block number at which the call should get executed.
