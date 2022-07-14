@@ -205,3 +205,16 @@ The script accepts these inputs fields:
 ### Example through democracy but batching 2 txs
 
 `yarn generic-call-propose -w ws://127.0.0.1:34102  --call "0x0302f24ff3a9cf04c71dbc94d0b566f7a27b94566cacc0f0f4ab324c46e55d02d0033343b4be8a55532d28" --call "0x0302f24ff3a9cf04c71dbc94d0b566f7a27b94566cacc0f0f4ab324c46e55d02d0033343b4be8a55532d28" --account-priv-key "0x5fb92d6e98884f76de468fa3f6278f8807c48bebc13595d45af5bdc4da702133" --send-preimage-hash true --send-proposal-as democracy`
+
+## Derivated Address Calculator script
+
+Script that allows to calculate what the derivative address will be for a specific multilocation in a given parachain
+
+The script accepts these inputs fields:
+- `--parachain-ws-provider or --wr`, which specifies the websocket provider of the parachain in which the address should be calculated
+- `--multilocation or -m`, the multilocation for which we want to calculate the derivated address
+- `--length or -l`, the desired length for the resulting address
+
+### Example
+
+`yarn xcm-derivated-address-calculator --wp  ws://127.0.0.1:34102  --multilocation '{ "parents": 1, "interior": {"X2": [ { "Parachain": 1000 }, { "AccountKey20": {"network": "Any", "key": "0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac"} }]}}' -l 20`
